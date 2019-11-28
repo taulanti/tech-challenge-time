@@ -33,19 +33,41 @@ body {
 }
 
 .part-two-timerlist {
-  top: 50%;
-  left: 50%;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 70%;
+  height: 30%;
+  margin: auto;
+}
+
+.part-two-timerlist button {
+  margin-top: 1em;
+  font-size: 12px;
+  font-weight: 400;
+  letter-spacing: 1px;
+  color: #f0eef9;
   text-align: center;
-  color: white;
+  text-decoration: none;
+  text-transform: uppercase;
+  cursor: pointer;
+  background-color: transparent;
+}
+
+.part-two-timerlist button:hover {
+  color: #09061b;
+  border-color: #09061b;
+  outline: 0;
 }
 
 .part-two {
   right: 0;
-  -webkit-background-size: cover;
   background-size: cover;
   background-position: center center;
   transition: 0.9s;
   background: #120d2f;
+  color: white;
   /* fallback for old browsers */
 }
 

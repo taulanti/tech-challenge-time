@@ -6,9 +6,8 @@
   width: 100%;
 }
 
-.timer-buttons button:hover, .timer-buttons button:focus {
+.timer-buttons button:hover {
   color: #09061b;
-  background-color: #fff;
   border-color: #09061b;
   outline: 0;
 }
