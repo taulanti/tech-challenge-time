@@ -1,0 +1,47 @@
+.timer-card {
+  font-family: "Times New Roman", Times, serif;
+  border: 1px solid #292155;
+  background-color: #120d2f;
+  margin-top: 10px;
+}
+
+.timer-card .label-white {
+  padding-left: 6px;
+  margin-top: 10px;
+  font-size: 12px;
+  font-weight: 400;
+  letter-spacing: 1px;
+  color: #B3B3C1;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.timer-card .normal-label {
+  padding-left: 6px;
+  margin-top: 10px;
+  font-size: 12px;
+  font-weight: 400;
+  letter-spacing: 1px;
+  color: white;
+  text-decoration: none;
+}
+
+.timer-card button {
+  margin: 0.5em;
+  font-size: 12px;
+  font-weight: 400;
+  letter-spacing: 1px;
+  color: #f0eef9;
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+  cursor: pointer;
+  background-color: transparent;
+  margin-left: 380px;
+}
+
+.timer-card button:hover {
+  color: #09061b;
+  border-color: #09061b;
+  outline: 0;
+}
