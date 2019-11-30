@@ -9,8 +9,9 @@ const TimerCard = (props) => {
       <label className="label-white">Task project: </label>
       <label className="normal-label"> {props.taskProject}</label><br />
       <label className="label-white">Task duration: </label>
-      <label className="normal-label"> {props.taskDuration}</label><br/>
-      <button className="btn btn-outline-light">
+      <label className="normal-label"> {props.taskDuration}</label><br />
+      <button className="btn btn-outline-light"
+        onClick={props.onDelete}>
         Delete
       </button>
     </div>

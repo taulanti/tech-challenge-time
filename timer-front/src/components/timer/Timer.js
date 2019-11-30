@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import './Timer.css';
 import { Timer } from 'easytimer.js';
 import Aux from '../../hoc/_Aux';
+import { addTask } from '../../redux/actions/taskActions';
+import { connect } from 'react-redux';
 
 class TimerComp extends Component {
 
@@ -13,7 +15,10 @@ class TimerComp extends Component {
     this.state = {
       timer_text: timer.getTimeValues().toString(),
       timer: timer,
-      timer_state: "stopped"
+      timer_state: "stopped",
+      taskName: "default",
+      taskProject: "default",
+      duration: timer.getTimeValues().toString()
     };
 
     //Bind the functions
@@ -29,6 +34,10 @@ class TimerComp extends Component {
     timer.addEventListener("started", this.onTimerUpdated.bind(this));
 
     timer.addEventListener("reset", this.onTimerUpdated.bind(this));
+  }
+
+  inputChangeHandler = (e) => {
+    this.setState({ [e.target.name]: e.target.value });
   }
 
   componentWillUnmount() {
@@ -55,11 +64,13 @@ class TimerComp extends Component {
 
   stopTimer() {
     this.state.timer.stop();
-
+    this.onSubmit();
     this.setState({
       ...this.state,
       timer_text: "00:00:00",
-      timer_state: "stopped"
+      timer_state: "stopped",
+      taskName: "default",
+      taskProject: "default"
     });
   }
 
@@ -85,6 +96,29 @@ class TimerComp extends Component {
     console.log(this.state.timer.getTimeValues().toString());
     this.props.addTime(this.state.timer.getTimeValues());
   }
+
+  formatDuration = (time) => {
+    const t = time.split(":");
+    if (t[0] !== '00') {
+      return `${parseInt(t[0], 10)} hours and ${parseInt(t[1], 10)} minutes and ${parseInt(t[2], 10)} seconds`;
+    } else if (t[1] !== '00') {
+      return `${parseInt(t[1], 10)} minutes and ${parseInt(t[2], 10)} seconds`;
+    }
+    return `${parseInt(t[2], 10)} seconds`
+  }
+
+  onSubmit = () => {
+
+    const newTask = {
+      Id: 5,
+      taskName: this.state.taskName,
+      taskProject: this.state.taskProject,
+      taskDuration: this.formatDuration(this.state.timer_text)
+    };
+
+    this.props.addTask(newTask);
+  }
+
   render() {
     return (
       <Aux>
@@ -115,11 +149,13 @@ class TimerComp extends Component {
             <form>
               <div class="form-group">
                 <label for="formGroupExampleInput">Task name</label>
-                <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Enter task name"></input>
+                <input type="text" class="form-control" name="taskName" placeholder="Enter task name"
+                  onChange={this.inputChangeHandler}></input>
               </div>
               <div class="form-group">
                 <label for="formGroupExampleInput2">Project</label>
-                <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Enter project name"></input>
+                <input type="text" class="form-control" name="taskProject" placeholder="Enter project name"
+                  onChange={this.inputChangeHandler}></input>
               </div>
             </form>
           )}
@@ -131,4 +167,8 @@ class TimerComp extends Component {
   }
 }
 
-export default TimerComp;
+const mapStateToProps = state => ({
+  task: state.task
+});
+
+export default connect(mapStateToProps, { addTask })(TimerComp);
