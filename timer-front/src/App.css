@@ -3,11 +3,11 @@ body {
 }
 
 .partition {
-  height: 100%;
+  height: 90%;
   width: 50%;
   position: fixed;
   z-index: 1;
-  top: 0;
+  top: 50px;
   overflow-x: hidden;
   padding-top: 20px;
 }
@@ -44,6 +44,7 @@ body {
 
 .part-two-timerlist button {
   margin-top: 1em;
+  margin-left:1em;
   font-size: 12px;
   font-weight: 400;
   letter-spacing: 1px;

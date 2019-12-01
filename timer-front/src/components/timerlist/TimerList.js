@@ -6,21 +6,21 @@ import PropTypes from 'prop-types';
 
 class TimerList extends Component {
 
-  componentDidMount() {
-    this.props.getTasks();
-  }
-
   deleteTaskById = id => {
     this.props.deleteTask(id);
+  }
+
+  componentDidMount() {
+    this.props.getTasks('day');
   }
 
   renderTimeList() {
     const { tasks } = this.props.task;
     const result = tasks.map((card, index) => {
-      return <TimeCard key={Math.random(1000)} taskName={card.taskName} taskProject={card.taskProject}
-        taskDuration={card.taskDuration}
-        taskId={card.Id}
-        onDelete={this.deleteTaskById.bind(this, card.Id)} />
+      return <TimeCard key={Math.random(1000)} taskName={card.title} taskProject={card.project}
+        taskDuration={card.duration}
+        taskId={card.id}
+        onDelete={this.deleteTaskById.bind(this, card.id)} />
     });
     return result;
   }
@@ -28,7 +28,7 @@ class TimerList extends Component {
   render() {
     return (
       <div>
-        {this.renderTimeList()}
+        {this.props.isAuthenticated ? this.renderTimeList() : null}
       </div>
     );
   }
@@ -41,7 +41,8 @@ TimerList.propTypes = {
 }
 
 const mapStateToProps = (state) => ({
-  task: state.task
+  task: state.task,
+  isAuthenticated: state.auth.isAuthenticated
 })
 
 export default connect(mapStateToProps, { getTasks, deleteTask })(TimerList);

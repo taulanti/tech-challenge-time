@@ -93,7 +93,6 @@ class TimerComp extends Component {
   }
 
   logTime() {
-    console.log(this.state.timer.getTimeValues().toString());
     this.props.addTime(this.state.timer.getTimeValues());
   }
 
@@ -110,12 +109,10 @@ class TimerComp extends Component {
   onSubmit = () => {
 
     const newTask = {
-      Id: 5,
-      taskName: this.state.taskName,
-      taskProject: this.state.taskProject,
-      taskDuration: this.formatDuration(this.state.timer_text)
+      title: this.state.taskName,
+      project: this.state.taskProject,
+      duration: this.formatDuration(this.state.timer_text),
     };
-
     this.props.addTask(newTask);
   }
 
