@@ -24,4 +24,20 @@ export class TasksService {
   createTask(createTaskDto: CreateTaskDto, user: User): Promise<Task> {
     return this.taskRepository.createTask(createTaskDto, user);
   }
+
+  getTasks(user: User): Promise<Task[]>{
+    return this.taskRepository.getTasks(user);
+  }
+
+  getTasksByWeek(user: User): Promise<Task[]>{
+    return this.taskRepository.getTasksByWeek(user);
+  }
+
+  getTasksByMonth(user: User): Promise<Task[]>{
+    return this.taskRepository.getTasksByMonth(user);
+  }
+
+  getTasksByDay(user: User): Promise<Task[]>{
+    return this.taskRepository.getTasksByDay(user);
+  }
 }
