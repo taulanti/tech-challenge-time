@@ -51,7 +51,12 @@ export const register = ({ username, password }) => dispatch => {
       })
     )
     .catch(error => {
-      dispatch(returnErrors(error.response.data.error, error.response.status, 'REGISTER_FAIL'));
+      let msg;
+      console.log(error.response);
+      if (error.response.status === 400) {
+        msg = getError(error.response.data.message);
+      } else msg = error.response.data.message;
+      dispatch(returnErrors(msg, error.response.status, 'REGISTER_FAIL'));
       dispatch({
         type: REGISTER_FAIL
       });
@@ -77,16 +82,29 @@ export const login = ({ username, password }) => dispatch => {
       })
     )
     .catch(error => {
-      dispatch(returnErrors(error.response.data.error, error.response.status, 'LOGIN_FAIL'));
+      let msg;
+      console.log(error.response);
+      if (error.response.status === 400) {
+        msg = getError(error.response.data.message);
+      } else msg = error.response.data.message;
+      dispatch(returnErrors(msg, error.response.status, 'LOGIN_FAIL'));
       dispatch({
         type: LOGIN_FAIL
       });
     })
 }
 
-export const logout = () => dispatch =>{
+const getError = (data) => {
+  let msg = '';
+  for(let i = 0; i < data.length; i++){
+    msg += ` ${data[i].constraints.minLength}`;
+  }
+  return msg;
+}
+
+export const logout = () => dispatch => {
   dispatch({
-    type:LOGOUT_SUCCESS
+    type: LOGOUT_SUCCESS
   });
   dispatch({
     type: CLEAR_TASK
