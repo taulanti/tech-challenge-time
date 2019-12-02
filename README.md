@@ -31,6 +31,7 @@
   4. ###### "entity".controller.ts is the file with defined api routes.
   5. ###### dto contains the dto-s used for requests.
   6. ###### "entity".module.ts, where dependency injection takes place.
+  ##### Note: "entity" referes to Task and User in our case.
 
 
 #### Libraries and frameworks
