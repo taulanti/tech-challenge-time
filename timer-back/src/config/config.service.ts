@@ -3,7 +3,6 @@ import * as Joi from '@hapi/joi';
 import * as fs from 'fs';
 import { Task } from '../tasks/model/task.entity';
 import { User } from '../user/model/user.entity';
-import { join } from 'path';
 
 export type EnvConfig = Record<string, string>;
 

@@ -84,7 +84,6 @@ export class TaskRepository extends Repository<Task>{
   async getTasksByDay(user: User): Promise<Task[]> {
     const today = new Date();
     const yesterday = new Date(today.setDate(today.getDate()-1));
-
     const found = await Task.find({
       where: {
         user: user , date: MoreThan(yesterday)

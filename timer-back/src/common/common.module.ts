@@ -7,7 +7,7 @@ import { AuthService } from "./authentication/auth.service";
 
 @Global()
 @Module({
-    providers: [ConfigService, JwtStrategy],
+    providers: [ConfigService, JwtStrategy, AuthService],
     exports: [JwtStrategy, AuthService],
     imports: [UserModule, ConfigModule],
 })
