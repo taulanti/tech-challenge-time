@@ -79,6 +79,7 @@
    2. #### Write unit tests
    3. #### Add support for production.
    4. #### Polish the front-end
+   5. #### Commenting the code
  
 
 
