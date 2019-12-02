@@ -49,13 +49,14 @@
   1. ###### Bcrypt, for securing the passwords.
   2. ###### hapi/joi, for validating the config data
 
-#### Front-end Application
+### Front-end Application
  1. ###### Built with ReactJs, react-redux, reactstrap, axios.
  2. ###### [Easytimer.js](https://albert-gonzalez.github.io/easytimer.js/), a timer library build with all necessary operations such as             start, stop, reset, pause. My previous alternative was to update the time component once every 1000 milliseconds using                   setInterval(), using the library is cleaner and more compact. 
  ---
 #### How to start the app
  1. ##### Start the back-end server -> npm start
  2. ##### Start the front-end server -> npm start
+ 3. ##### There is a .env file in back-end code at src/config/development.env. Use it for test purposes.
  
 #### User flow
 1. ##### Top right are the register and login buttons. To use the app you should be registered and authenticated.
