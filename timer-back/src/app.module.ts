@@ -2,7 +2,7 @@ import { Module, Inject } from '@nestjs/common';
 import { TasksModule } from './tasks/tasks.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { typeOrmConfig } from './config/typorm.config';
-import { AuthModule } from './user/user.module';
+import { UserModule } from './user/user.module';
 import { ConfigModule } from './config/config.module';
 import { ConfigService } from './config/config.service';
 import { ConfigDatabaseService } from './config/config.database.service';
@@ -15,7 +15,15 @@ import { ConfigDatabaseService } from './config/config.database.service';
     }),
 
     TasksModule,
-    AuthModule
+    UserModule,
+    ConfigModule
   ]
 })
-export class AppModule { }
+export class AppModule {
+
+  static port: number;
+
+  constructor(private readonly _configService: ConfigService){
+    AppModule.port = parseInt(_configService.get('APPLICATION_PORT'));
+  }
+}

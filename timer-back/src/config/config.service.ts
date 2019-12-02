@@ -18,21 +18,6 @@ export class ConfigService {
   get(key: string): string {
     return this.envConfig[key];
   }
-
-  getDatabaseConfig(): Object {
-    return {
-      type: this.envConfig.DATABASE_TYPE,
-      host: this.envConfig.DATABASE_HOST,
-      port: Number(this.envConfig.DATABASE_PORT),
-      username: this.envConfig.DATABASE_USERNAME,
-      password: this.envConfig.DATABASE_PASSWORD,
-      database: this.envConfig.DATABASE_NAME,
-      ssl: Boolean(this.envConfig.DATABASE_SSL),
-      entities: [Task, User],
-      synchronize: Boolean(this.envConfig.DATABASE_SYNCHRONIZE),
-    }
-  }
-
   /**
    * Ensures all needed variables are set, and returns the validated JavaScript object
    * including the applied default values.
@@ -50,6 +35,9 @@ export class ConfigService {
       DATABASE_NAME: Joi.string(),
       DATABASE_SSL: Joi.string(),
       DATABASE_SYNCHRONIZE: Joi.string(),
+      APPLICATION_PORT: Joi.string(),
+      JWT_SECRET: Joi.string(),
+      TOKEN_EXPIRATION: Joi.string()
     });
 
     const { error, value: validatedEnvConfig } = envVarsSchema.validate(

@@ -24,7 +24,6 @@ export class TasksController {
   @Get('/day')
   async getTasksByDay(@GetUser() user: User): Promise<Task[]> {
     const result = await this.tasksService.getTasksByDay(user);
-    console.log(result);
     return result;
   }
 

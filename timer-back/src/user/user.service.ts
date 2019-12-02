@@ -2,21 +2,21 @@ import { Injectable, UnauthorizedException, NotFoundException } from '@nestjs/co
 import { UserRepository } from './repository/user.repository';
 import { InjectRepository } from '@nestjs/typeorm';
 import { AuthCredentialsDto } from './dto/auth-credentials.dto';
-import { JwtService } from '@nestjs/jwt';
 import { User } from "../user/model/user.entity";
+import { AuthService } from 'src/common/authentication/auth.service';
 
 @Injectable()
 export class UserService {
   constructor(
     @InjectRepository(UserRepository)
     private userRepository: UserRepository,
-    private jwtService: JwtService,
+    private authService: AuthService
   ) { }
 
   async signUp(authCredentialsDto: AuthCredentialsDto): Promise<{ username: string, token: string }> {
     const username = await this.userRepository.signUp(authCredentialsDto);
     const payload = { username };
-    const token = this.jwtService.sign(payload);
+    const token = await this.authService.signPayload(payload);
 
     return { username, token };
   }
@@ -28,7 +28,7 @@ export class UserService {
     }
 
     const payload = { username };
-    const token = this.jwtService.sign(payload);
+    const token = await this.authService.signPayload(payload);
 
     return { token, username };
   }
