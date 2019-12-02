@@ -1,5 +1,5 @@
 ### Tech stack used
-###### This project was done using NestJs a progressive Node.js framework for building efficient, reliable and scalable server-side applications.It uses progressive JavaScript, is built with and fully supports TypeScript (yet still enables developers to code in pure JavaScript) and combines elements of OOP (Object Oriented Programming), FP (Functional Programming), and FRP (Functional Reactive Programming).
+###### This project was done using [NestJs](https://nestjs.com/) a progressive Node.js framework for building efficient, reliable and scalable server-side applications.It uses progressive JavaScript, is built with and fully supports TypeScript (yet still enables developers to code in pure JavaScript) and combines elements of OOP (Object Oriented Programming), FP (Functional Programming), and FRP (Functional Reactive Programming).
 #### Some of the advantages of this framework:
 1. Gives you true flexibility by allowing use of any other libraries thanks to modular architecture.
 2. An adaptable ecosystem that is a fully-fledged backbone for all kinds of server-side applications.
@@ -7,9 +7,9 @@
 4. It is becoming a tech-agnostic platform.
 
 
-#### Back-end Application structure
-##### Entity models
-   ######  **user** and **task**, with one - to many - relationship.
+### Back-end Application structure
+#### Entity models
+   ##### user and task, with one - to many - relationship.
 ##### Overall structure
 ```
   - common
@@ -40,10 +40,10 @@
 ##### Server
  1. ###### Express
 ##### Authentication
- 1. ###### Passport, Passport is authentication middleware for Node.js. Extremely flexible and modular, Passport can be unobtrusively              dropped in to any Express-based web application, it offers authentication with twitter, facebook, google and many more.                  NestJs has the Passport integrated as its module.
+ 1. ###### Passport. Passport is authentication middleware for Node.js. Extremely flexible and modular, Passport can be unobtrusively              dropped in to any Express-based web application, it offers authentication with twitter, facebook, google and many more.                  NestJs has the Passport integrated as its module.
  2. ###### JWT
  ##### Tests
-  1. ###### Jest, offered as NestJs module.
+  1. ###### Jest, contained in NestJs as a module.
   
  ##### Other libraries
   1. ###### Bcrypt, for securing the passwords.
@@ -51,7 +51,7 @@
 
 #### Front-end Application
  1. ###### Built with ReactJs, react-redux, reactstrap, axios.
- 2. ###### Easytimer.js, a timer library build with all necessary operations such as start, stop, reset, pause. My previous alternative             was to update the time component once every 1000 milliseconds using setInterval(), using the library is cleaner and more                 compact. 
+ 2. ###### [Easytimer.js](https://albert-gonzalez.github.io/easytimer.js/), a timer library build with all necessary operations such as             start, stop, reset, pause. My previous alternative was to update the time component once every 1000 milliseconds using                   setInterval(), using the library is cleaner and more compact. 
  ---
 #### How to start the app
  1. ##### Start the back-end server -> npm start
